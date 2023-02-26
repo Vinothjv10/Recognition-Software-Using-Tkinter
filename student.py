@@ -172,7 +172,7 @@ class Student:
         div_combo["values"] = ("A",
                                "B")
         div_combo.current(0)
-        div_combo.grid(row=1, column=1, padx=10, pady=10, sticky=W)
+        div_combo.grid(row=1, column=1, padx=10, pady=5, sticky=W)
     # Roll No
         roll_no_label = Label(class_Studdent_frame, text="Roll No: ",
                               font=("times new roman", 13, "bold"), bg="white")
@@ -195,7 +195,7 @@ class Student:
         gender_combo["values"] = ("Male",
                                   "Female", "Other")
         gender_combo.current(0)
-        gender_combo.grid(row=2, column=1, padx=10, pady=10, sticky=W)
+        gender_combo.grid(row=2, column=1, padx=10, pady=5, sticky=W)
     # DOb
         dob_label = Label(class_Studdent_frame, text="DOB : ",
                           font=("times new roman", 13, "bold"), bg="white")
@@ -407,11 +407,13 @@ class Student:
 
                     ))
                 conn.commit()
-                conn.fetch_data()
-                conn.close()
+                # conn.fetch_data()
+                # conn.close()
                 messagebox.showinfo(
                     "Success", "Student details has been added successfully", parent=self.root)
 
+                self.fetch_data()
+                conn.close()
             except Exception as es:
                 messagebox.showerror(
                     "Error", f"Due To :{str(es)}", parent=self.root)
