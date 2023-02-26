@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
+from student import Student
 
 
 class Face_Recongnition_Sytem:
@@ -55,10 +56,11 @@ class Face_Recongnition_Sytem:
         img5 = img5.resize((220, 220), Image.LANCZOS)
         self.photoimg5 = ImageTk.PhotoImage(img5)
 
-        b1 = Button(bg_img, image=self.photoimg5, cursor="hand2")
+        b1 = Button(bg_img, image=self.photoimg5,
+                    command=self.student_details, cursor="hand2")
         b1.place(x=200, y=100, width=220, height=220)
 
-        b1_1 = Button(bg_img, text="Student Details", cursor="hand2", font=(
+        b1_1 = Button(bg_img, text="Student Details", command=self.student_details, cursor="hand2", font=(
             "time new roman", 15, "bold"), bg="darkblue", fg="white")
         b1_1.place(x=200, y=300, width=220, height=40)
 
@@ -140,7 +142,7 @@ class Face_Recongnition_Sytem:
             "time new roman", 15, "bold"), bg="darkblue", fg="white")
         b1_1.place(x=800, y=580, width=220, height=40)
 
-    # Ecit Button
+    # Exit Button
         img12 = Image.open(
             r"C:\Users\Vignesh\Desktop\Face-Recognition-System\images\icon.png")
         img12 = img12.resize((220, 220), Image.LANCZOS)
@@ -152,6 +154,11 @@ class Face_Recongnition_Sytem:
         b1_1 = Button(bg_img, text="Exit", cursor="hand2", font=(
             "time new roman", 15, "bold"), bg="darkblue", fg="white")
         b1_1.place(x=1100, y=580, width=220, height=40)
+
+    # ============ function buttons ============
+    def student_details(self):
+        self.new_window = Toplevel(self.root)
+        self.app = Student(self.new_window)
 
 
 if __name__ == "__main__":
