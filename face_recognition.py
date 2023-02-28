@@ -67,31 +67,40 @@ class Face_recognition:
                 my_cursor.execute(
                     "select Name from student where Student_id="+str(id))
                 n = my_cursor.fetchone()
-                n = "+".join(n)
+                # n = str(n)
+                # n = "+".join(n)
 
-                # my_cursor.execute(
-                #     "select Roll from student where Student_id="+str(id))
-                # r = my_cursor.fetchone()
+                my_cursor.execute(
+                    "select Roll from student where Student_id="+str(id))
+                r = my_cursor.fetchone()
+                # r = str(r)
                 # r = "+".join(r)
 
-                # my_cursor.execute(
-                #     "select Dep from student where Student_id="+str(id))
-                # d = my_cursor.fetchone()
+                my_cursor.execute(
+                    "select Dep from student where Student_id="+str(id))
+                d = my_cursor.fetchone()
+                # d = str(d)
                 # d = "+".join(d)
+
+                # if n == "None" or r == "None" or d == "None":
+                #     cv2.rectangle(img, (x, y), (x+w, y+h), (0, 0, 255), 3)
+
+                #     cv2.putText(img, "Unknown Face", (x, y-55),
+                #                 cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
 
                 if confidence > 77:
                     cv2.putText(
                         img, f"Roll:{r}", (x, y-55), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
-                    # cv2.putText(
-                    #     img, f"Name:{n}", (x, y-30), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
-                    # cv2.putText(
-                    #     img, f"Department :{d}", (x, y-5), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
+                    cv2.putText(
+                        img, f"Name:{n}", (x, y-30), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
+                    cv2.putText(
+                        img, f"Department :{d}", (x, y-5), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
                 else:
                     cv2.rectangle(img, (x, y), (x+w, y+h), (0, 0, 255), 3)
                     cv2.putText(
                         img, "Unknown Face", (x, y-5), cv2.FONT_HERSHEY_COMPLEX, 0.8, (255, 255, 255), 3)
 
-                coord = [x, y, w, y]
+                coord = [x, y, w, h]
 
             return coord
 

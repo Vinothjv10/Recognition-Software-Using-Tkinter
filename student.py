@@ -625,6 +625,7 @@ class Student:
                     if cv2.waitKey(1) == 13 or int(img_id) == 100:
                         break
                 cap.release()
+                self.add_data()
                 cv2.destroyAllWindows()
                 messagebox.showinfo(
                     "Result", "Generating data sets completed!!!!")
