@@ -67,19 +67,19 @@ class Face_recognition:
                 my_cursor.execute(
                     "select Name from student where Student_id="+str(id))
                 n = my_cursor.fetchone()
-                # n = str(n)
+                n = str(n)
                 # n = "+".join(n)
 
                 my_cursor.execute(
                     "select Roll from student where Student_id="+str(id))
                 r = my_cursor.fetchone()
-                # r = str(r)
+                r = str(r)
                 # r = "+".join(r)
 
                 my_cursor.execute(
                     "select Dep from student where Student_id="+str(id))
                 d = my_cursor.fetchone()
-                # d = str(d)
+                d = str(d)
                 # d = "+".join(d)
 
                 # if n == "None" or r == "None" or d == "None":
